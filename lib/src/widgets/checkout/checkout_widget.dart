@@ -166,7 +166,7 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
   }
 
   Widget _buildTitle() {
-    final accentColor = context.colorScheme().secondary;
+    // final accentColor = context.colorScheme().secondary;
     var emailAndAmount = Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
@@ -232,12 +232,12 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
             ],
           ),
         ),
-        if (_showTabs) buildCheckoutMethods(accentColor)
+        if (_showTabs) buildCheckoutMethods(Theme.of(context).colorScheme.secondary)
       ],
     );
   }
 
-  Widget buildCheckoutMethods(Color accentColor) {
+  Widget buildCheckoutMethods(Color Theme.of(context).colorScheme.secondary) {
     return AnimatedSize(
       duration: const Duration(milliseconds: 300),
       curve: Curves.fastOutSlowIn,
@@ -249,14 +249,14 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
           controller: _tabController,
           isScrollable: true,
           unselectedLabelColor: context.colorScheme().onBackground,
-          labelColor: accentColor,
+          labelColor: Theme.of(context).colorScheme.secondary,
           labelStyle:
               new TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
           indicator: new ShapeDecoration(
             shape: RoundedRectangleBorder(
                   borderRadius: tabBorderRadius,
                   side: BorderSide(
-                    color: accentColor,
+                    color: Theme.of(context).colorScheme.secondary,
                     width: 1.0,
                   ),
                 ) +
