@@ -237,7 +237,7 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
     );
   }
 
-  Widget buildCheckoutMethods(Color Theme.of(context).colorScheme.secondary) {
+  Widget buildCheckoutMethods(Color accentColor) {
     return AnimatedSize(
       duration: const Duration(milliseconds: 300),
       curve: Curves.fastOutSlowIn,
