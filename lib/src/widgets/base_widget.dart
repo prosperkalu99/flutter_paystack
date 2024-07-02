@@ -12,14 +12,15 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
 
   @override
   Widget build(BuildContext context) {
-    return new PopScope(
+    return new WillPopScope(
+      onWillPop: _onWillPop,
       child: buildChild(context),
     );
   }
 
   Widget buildChild(BuildContext context);
 
-  bool _onWillPop() {
+  Future<bool> _onWillPop() async {
     if (isProcessing) {
       return false;
     }
@@ -74,15 +75,13 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
             ],
           );
 
-    bool? exit;
-    showDialog<bool>(
-      context: context,
-      builder: (BuildContext context) => dialog,
-    ).then((val){
-      exit = val;
-    });
+    bool exit = await showDialog<bool>(
+          context: context,
+          builder: (BuildContext context) => dialog,
+        ) ??
+        false;
 
-    if (exit ?? false) {
+    if (exit) {
       Navigator.of(context).pop(returnValue);
     }
     return false;
