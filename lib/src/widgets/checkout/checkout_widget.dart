@@ -138,7 +138,7 @@ class _CheckoutWidgetState extends BaseState<CheckoutWidget>
       expanded: true,
       fullscreen: widget.fullscreen,
       titlePadding: EdgeInsets.all(0.0),
-      onCancelPress: ()=> Navigator.pop(context),
+      onCancelPress: onCancelPress,
       title: _buildTitle(),
       content: new Container(
         child: new SingleChildScrollView(
