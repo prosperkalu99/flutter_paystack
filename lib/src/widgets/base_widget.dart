@@ -13,7 +13,6 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   @override
   Widget build(BuildContext context) {
     return new PopScope(
-      canPop: _onWillPop(),
       child: buildChild(context),
     );
   }
